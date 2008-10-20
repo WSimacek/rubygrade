@@ -60,7 +60,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.delete!
 
-    admin_user_path(@user)
+    redirect_to admin_user_path(@user)
   end
 
   # GET /admin_users
