@@ -1,80 +1,65 @@
-== Welcome to BaseApp
+h1. Welcome to BaseApp
 
-BaseApp is a default Ruby on Rails project which by default includes the following:
+BaseApp is a default Ruby on Rails project that kick-starts your next Rails project.
 
-== Quickstart
+Read the next paragraph for a quickstart. Head over to "http://baseapp.org":http://baseapp.org for more detailed documentation or "http://baseapp.lighthouseapp.com":http://baseapp.lighthouseapp.com to report bugs and request features.
+
+h2. Quickstart
 
 Ok, before you dive in :-)
 
 These 6 simple steps are the essentials to get you smoothly up and running...
 
-  1. Create your own config/database.yml (you can copy one of the sample files in there and edit it)
+# Create your own config/database.yml (you can copy one of the sample files in there and edit it)
+# Edit the db/bootstrap/users.yml file to contain your personal "admin" user details
+# Edit the db/bootstrap/setting.yml file to contain "values" for your initial settings 
+# Open a shell and run @rake db:bootstrap@ to create your database and setup the prepared defaults. 
+# Start your server with @./script/server@
+# Open up "http://localhost:3000":http://localhost:3000 and enjoy!
 
-  2. Edit the db/bootstrap/users.yml file to contain your personal "admin" user details
+h2. Features
 
-  3. Edit the db/bootstrap/setting.yml file to contain "values" for your initial settings 
+* Layout
+** Tabs
+** Global links
+** Optional sidebar
+** Notice, warning and error flash messages
+** Both a default stylesheet as well as a 'clean' one are included for easy layout development.
+* Default dashboard page
+* Administration panel where you can:
+** Manage users (add, delete, purge, suspend, activate, send new passwords)
+** Manage settings 
+* User authentication, with password recovery and login recovery and account activation (by email)
+* User Profiles:
+** Location, Website, Full name fields by default, easily extendible.
+** Gravatar for avatar support
+* Very useful Rails plugin available:
+** restful_authentication
+** acts_as_state_machine
+* Currently frozen at Rails 2.1.1
 
-  4. Open a shell and run the following to create your database and setup the prepared defaults. 
+h2. Features, bugs and development!
 
-		export RAILS_ENV=development
-		cd <path_into_your_baseapp_direcory>
-		rake db:bootstrap
+BaseApp is open source software and relies on your contributions to grow! We have some useful utilities that may help you out.
 
-  5. The you may start your server. In development you can run:
+* "http://baseapp.org":http://baseapp.org
 
-		./script/server
-
-  6. Finally, open a browser at: 'http://localhost:3000/'
-
-  7. Enjoy!
-
-== Features
-
- * A layout, including:
-    - tabs
-    - global links
-    - optional sidebar
-    - notice, warning and error flash messages
-    - a very agreeable stylesheet (which is easy to customize)
- * Default dashboard page
- * Administration panel where you can:
-    - Manage users (add, delete, purge, suspend, activate, send new passwords)
-    - Manage settings 
- * User authentication, with:
-    - login form at /login
-    - signup form at /signup
-    - password and login recovery
-    - activation
- * User Profiles:
-    - Location, Website, Full name fields by default, easily extendible.
-    - Gravatars
- * Plugins:
-    - restful_authentication
-    - acts_as_state_machine
- * Frozen Rails 2.1.1
-
-== Features, bugs and development!
-
-BaseApp is open source software and relies on your contributions to grow! We have some
-useful utilities that may help you out.
-
- * http://baseapp.org
-
-	The BaseApp website provides you with up-to-date development information and the 
-	latest news regarding BaseApp.
+The BaseApp website provides you with up-to-date development information and the latest news regarding BaseApp.
 	
- * http://github.com/ariejan/baseapp
+* "http://github.com/ariejan/baseapp":http://github.com/ariejan/baseapp
 
-	The GitHub! Fork your own development branch here if you wish to contribute code. 
-	Pull requests should be send to 'ariejan' to include them in the main BaseApp code base.
+GitHub always contains the latest BaseApp code. Fork your own development branch here if you wish to contribute code. 
+
+Pull requests should be send to 'ariejan' to include them in the main BaseApp code base.
 	
- * http://baseapp.lighthouseapp.com
+* "http://baseapp.lighthouseapp.com":http://baseapp.lighthouseapp.com
 
-	Bug reports and feature requests should be posted in LightHouse. 
+Bug reports and feature requests should be posted in LightHouse. 
 	
-	Bugs always have priority over new features! But, you're free to help out with
-	whatever you want. 
+Bugs always have priority over new features! But, you're free to help out with whatever you want. 
 
-== Credit
+h2. Credits
 
-BaseAPP is developed by Kabisa ICT and Ariejan de Vroom. It is released to the public under the MIT license.
+BaseAPP is developed by "Kabisa ICT":http://kabisa.nl, "Ariejan de Vroom":http://ariejan.net and a whole bunch of "cool contributors":http://github.com/ariejan/baseapp/network. 
+
+BaseApp is released to the public under the MIT license.
