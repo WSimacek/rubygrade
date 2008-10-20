@@ -36,6 +36,7 @@ h2. Features
 * Very useful Rails plugin available:
 ** restful_authentication
 ** acts_as_state_machine
+** asset_packager
 * Currently frozen at Rails 2.1.1
 
 h2. Features, bugs and development!
