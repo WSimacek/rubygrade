@@ -9,4 +9,8 @@ javascripts:
 stylesheets: 
 - base: 
   - default
+- admin:
+  - default
   - admin
+- dialog:
+  - dialog
