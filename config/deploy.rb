@@ -1,15 +1,36 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :stages, %w(testing acceptance production)
+set :default_stage, "production"
+require File.expand_path("#{File.dirname(__FILE__)}/../vendor/gems/capistrano-ext-1.2.1/lib/capistrano/ext/multistage")
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
+namespace :db do
+  desc 'Dumps the production database to db/production_data.sql on the remote server'
+  task :remote_db_dump, :roles => :db, :only => { :primary => true } do
+    run "cd #{deploy_to}/#{current_dir} && " +
+      "rake RAILS_ENV=#{rails_env} db:database_dump --trace" 
+  end
 
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
+  desc 'Downloads db/production_data.sql from the remote production environment to your local machine'
+  task :remote_db_download, :roles => :db, :only => { :primary => true } do  
+    execute_on_servers(options) do |servers|
+      self.sessions[servers.first].sftp.connect do |tsftp|
+        tsftp.download!("#{deploy_to}/#{current_dir}/db/production_data.sql", "db/production_data.sql")
+      end
+    end
+  end
 
-role :app, "your app-server here"
-role :web, "your web-server here"
-role :db,  "your db-server here", :primary => true
+  desc 'Cleans up data dump file'
+  task :remote_db_cleanup, :roles => :db, :only => { :primary => true } do
+    execute_on_servers(options) do |servers|
+      self.sessions[servers.first].sftp.connect do |tsftp|
+        tsftp.remove! "#{deploy_to}/#{current_dir}/db/production_data.sql" 
+      end
+    end
+  end 
+
+  desc 'Dumps, downloads and then cleans up the production data dump'
+  task :remote_db_runner do
+    remote_db_dump
+    remote_db_download
+    remote_db_cleanup
+  end
+end
