@@ -2,6 +2,34 @@
 
 BaseApp is a default Ruby on Rails project which by default includes the following:
 
+== Quickstart
+
+Ok, before you dive in :-)
+
+These 6 simple steps are the essentials to get you smoothly up and running...
+
+  1. Create your own config/database.yml (you can copy one of the sample files in there and edit it)
+
+  2. Edit the db/bootstrap/users.yml file to contain your personal "admin" user details
+
+  3. Edit the db/bootstrap/setting.yml file to contain "values" for your initial settings 
+
+  4. Open a shell and run the following to create your database and setup the prepared defaults. 
+
+		export RAILS_ENV=development
+		cd <path_into_your_baseapp_direcory>
+		rake db:bootstrap
+
+  5. The you may start your server. In development you can run:
+
+		./script/server
+
+  6. Finally, open a browser at: 'http://localhost:3000/'
+
+  7. Enjoy!
+
+== Features
+
  * A layout, including:
     - tabs
     - global links
@@ -25,31 +53,28 @@ BaseApp is a default Ruby on Rails project which by default includes the followi
     - acts_as_state_machine
  * Frozen Rails 2.1.1
 
-== Getting started
+== Features, bugs and development!
 
-There are several things you'll need to do before you can really get started. Run the following rake command:
+BaseApp is open source software and relies on your contributions to grow! We have some
+useful utilities that may help you out.
 
-   rake notes:todo
+ * http://baseapp.org
 
-This will generate a list of TODO entries throughout the project. Check the TODO entries in the code for more information.
+	The BaseApp website provides you with up-to-date development information and the 
+	latest news regarding BaseApp.
+	
+ * http://github.com/ariejan/baseapp
 
-Note: Todo's tagged with (BaseApp) are for the BaseApp project itself. You can safely ignore these.
+	The GitHub! Fork your own development branch here if you wish to contribute code. 
+	Pull requests should be send to 'ariejan' to include them in the main BaseApp code base.
+	
+ * http://baseapp.lighthouseapp.com
 
-== Contribute! 
-
-There are still some things I want in BaseApp, but which haven't gotten around to implementing yet.
-
-NOTE: Also run 'rake notes:todo'. Todo's tagged with (BaseApp) are also wanted features
-
- * TESTS!!!
- * Manage roles / permissions
- * OpenID signup/login
- * Configuration (e.g. from config/app.yml) (use activation? enable OpenID? etc.)
- * Use Gibberish, Globalize or Rails 2.2's i18n and make the whole app available in English and Dutch by default
- * A website, documentation, bug/patch tracker
- 
-Feel free to implement any of these features and send in a patch. Other features are welcome also, but those will be judged on general usability. 
+	Bug reports and feature requests should be posted in LightHouse. 
+	
+	Bugs always have priority over new features! But, you're free to help out with
+	whatever you want. 
 
 == Credit
 
-BaseAPP is developed by Ariejan de Vroom and released to the public under the MIT license.
+BaseAPP is developed by Kabisa ICT and Ariejan de Vroom. It is released to the public under the MIT license.
