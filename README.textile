@@ -37,6 +37,7 @@ h2. Features
 ** restful_authentication
 ** acts_as_state_machine
 ** asset_packager
+* Multi-stage deployments according to the D-TAP system (Development, Testing, Acceptance, Production). If you don't want to use, production is the default deployment option. 
 * Currently frozen at Rails 2.1.1
 
 h2. Features, bugs and development!
