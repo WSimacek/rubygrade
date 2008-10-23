@@ -1,32 +1,63 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
+  
   layout 'login'
   
-  # render new.rhtml
   def new
   end
 
   def create
-    self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      if params[:remember_me] == "1"
-        self.current_user.remember_me
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-      end
-      redirect_back_or_default('/')
-      flash[:notice] = "Welcome back to #{s(:site_name)}, #{self.current_user.login}!"
+    logout_keeping_session!
+    if using_open_id?
+      open_id_authentication
     else
-      # TODO: (base_app) Add feature to resend the activation email, which might be caught as SPAM
-      flash.now[:error] = "The login/password combination you provided is incorrect or your account has not yet been activated."
-      render :action => 'new'
+      password_authentication
     end
   end
 
   def destroy
-    self.current_user.forget_me if logged_in?
-    cookies.delete :auth_token
-    reset_session
-    flash[:notice] = "You have been logged out. Goodbye!"
-    redirect_back_or_default('/')
+    logout_killing_session!
+    flash[:notice] = "You have been logged out."
+    redirect_back_or_default(root_path)
+  end
+
+  def open_id_authentication
+    authenticate_with_open_id do |result, identity_url|
+      if result.successful? && self.current_user = User.find_by_identity_url(identity_url)
+        successful_login
+      else
+        flash[:error] = result.message || "Sorry no user with that identity URL exists"
+        @rememer_me = params[:remember_me]
+        render :action => :new
+      end
+    end
+  end
+  
+  protected
+
+  def password_authentication
+    user = User.authenticate(params[:login], params[:password])
+    if user
+      self.current_user = user
+      successful_login
+    else
+      note_failed_signin
+      @login = params[:login]
+      @remember_me = params[:remember_me]
+      render :action => :new
+    end
+  end
+  
+  def successful_login
+    new_cookie_flag = (params[:remember_me] == "1")
+    handle_remember_cookie! new_cookie_flag
+    redirect_back_or_default(root_path)
+    flash[:notice] = "Logged in successfully"
+  end
+
+  def note_failed_signin
+    flash[:error] = "Couldn't log you in as '#{params[:login]}'"
+    logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end

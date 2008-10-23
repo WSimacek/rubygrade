@@ -9,15 +9,25 @@
 <% end -%>
 
 <% form_tag session_path do -%>
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
+	<fieldset>
+		<legend>Your Details</legend>
+		
+		<p><label for="login">Login</label><br/>
+		<%= text_field_tag 'login' %></p>
 
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
+		<p><label for="password">Password</label><br/>
+		<%= password_field_tag 'password' %></p>
 
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
-
+		<p><label for="remember_me">Remember me:</label>
+		<%= check_box_tag 'remember_me' %></p>
+	</fieldset>
+	<fieldset>
+		<legend>Login with OpenID</legend>
+		
+		<p><label for="openid_url">OpenID URL</label><br/>
+		<%= text_field_tag 'openid_url' %></p>		
+	</fieldset>
+	
 <ul>
 	<li><%= link_to "Sign up for an account now", signup_url %></li>
 	<li><%= link_to "Having trouble logging in?", user_troubleshooting_url %></li>

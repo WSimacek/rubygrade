@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080101000005) do
+ActiveRecord::Schema.define(:version => 20081023115224) do
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",                  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :default => "", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
@@ -29,9 +44,6 @@ ActiveRecord::Schema.define(:version => 20080101000005) do
     t.integer "user_id"
   end
 
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
-
   create_table "settings", :force => true do |t|
     t.string   "label"
     t.string   "identifier"
@@ -43,19 +55,23 @@ ActiveRecord::Schema.define(:version => 20080101000005) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login"
-    t.string   "email"
+    t.string   "login",                     :limit => 40
+    t.string   "identity_url"
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
+    t.string   "remember_token",            :limit => 40
+    t.string   "activation_code",           :limit => 40
+    t.string   "state",                                    :default => "passive"
+    t.datetime "remember_token_expires_at"
+    t.string   "password_reset_cod"
+    t.datetime "activated_at"
+    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.string   "activation_code",           :limit => 40
-    t.datetime "activated_at"
-    t.string   "state",                                   :default => "passive"
-    t.datetime "deleted_at"
-    t.string   "password_reset_code"
   end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

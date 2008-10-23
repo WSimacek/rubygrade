@@ -1,15 +1,21 @@
 <% content_for :sidebar do -%>
 <h2>My account</h2>
 
+<div id="gravatar">
+	<%= gravatar_for @user, :size => 100 %>
+</div>
+
 <ul>
 	<li><%= link_to "Update my profile", edit_profile_url(current_user) %></li>
 	<li><%= link_to "Update my avatar", edit_avatar_user_url(current_user) %></li>
 </ul>
 
+<% if @user.not_using_openid? %>
 <ul>
 	<li><%= link_to "Change my email address", edit_email_user_url(@user) %></li>
 	<li><%= link_to "Change my password", edit_password_user_url(@user) %></li>
 </ul>
+<% end %>
 
 <% unless admin? -%>
 <ul>
