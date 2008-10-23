@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<title><%= s(:site_name) %></title>
+	<title><%= configatron.site_name %></title>
 	
 	<%= stylesheet_link_merged :dialog %>
   	<%= javascript_include_merged :base %>
@@ -40,8 +40,8 @@
 
   </div>
   <div id="footer">
-    <%= s(:site_name) %> by <%= s(:company_name) %><br />
-	Copyright © <%= s(:company_name) %>
+    <%= configatron.site_name %> by <%= configatron.company_name %><br />
+	Copyright © <%= configatron.company_name %>
   </div>
 
 
