@@ -14,6 +14,19 @@ a:hover {
 	background-color: #0054ff;
 	color: #fff;
 }
+fieldset {
+	border: none;
+	border-top: 1px solid #999;
+}
+fieldset legend {
+	font-size: 140%;
+	margin: 0 10px 0 15px;
+	padding: 0 5px;
+}
+fieldset div.js_option {
+	text-align: right;
+	font-size: 87%;
+}
 input[type="text"], input[type="password"] {
 	font-size: 1.4em;
 	width: 92%;

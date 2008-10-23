@@ -2,15 +2,17 @@
 <%= configatron.site_name %> Login
 <% end -%>
 
-<% content_for :sidebar do -%>
-<ul>
-	<li><%= link_to("Sign up for a new account", signup_url)%></li>
-</ul>
-<% end -%>
-
 <% form_tag session_path do -%>
+	&nbsp;
 	<fieldset>
-		<legend>Your Details</legend>
+		<legend>Login with OpenID</legend>
+	
+		<p><label for="openid_url">OpenID URL</label><br/>
+		<%= text_field_tag 'openid_url' %></p>		
+	</fieldset>
+
+	<fieldset>
+		<legend>Or Your <%= configatron.site_name %> Account</legend>
 		
 		<p><label for="login">Login</label><br/>
 		<%= text_field_tag 'login' %></p>
@@ -20,12 +22,6 @@
 
 		<p><label for="remember_me">Remember me:</label>
 		<%= check_box_tag 'remember_me' %></p>
-	</fieldset>
-	<fieldset>
-		<legend>Login with OpenID</legend>
-		
-		<p><label for="openid_url">OpenID URL</label><br/>
-		<%= text_field_tag 'openid_url' %></p>		
 	</fieldset>
 	
 <ul>
