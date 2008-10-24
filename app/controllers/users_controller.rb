@@ -222,7 +222,7 @@ class UsersController < ApplicationController
   
   def failed_creation(message = 'Sorry, there was an error creating your account')
     flash[:error] = message
-    @user = User.new
+    # @user = User.new
     render :action => :new
   end
 end
