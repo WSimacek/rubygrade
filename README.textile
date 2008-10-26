@@ -11,11 +11,10 @@ Ok, before you dive in :-)
 These 6 simple steps are the essentials to get you smoothly up and running...
 
 # Create your own config/database.yml (you can copy one of the sample files in there and edit it)
-# Edit the db/bootstrap/users.yml file to contain your personal "admin" user details
-# Edit the db/bootstrap/setting.yml file to contain "values" for your initial settings 
-# Open a shell and run @rake db:bootstrap@ to create your database and setup the prepared defaults. 
+# Edit the config/config.yml file to suit your needs
+# Open a shell and run @rake db:migrate@ to create your database and setup the prepared defaults. 
 # Start your server with @./script/server@
-# Open up "http://localhost:3000":http://localhost:3000 and enjoy!
+# Open up "http://localhost:3000":http://localhost:3000 and login with username 'admin' and password 'yippeekayea'.
 
 h2. Features
 
