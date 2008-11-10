@@ -53,7 +53,6 @@ h2. Features
 ** acts_as_state_machine
 ** asset_packager
 * Multi-stage deployments according to the D-TAP system (Development, Testing, Acceptance, Production). If you don't want to use, production is the default deployment option. "more info":http://weblog.jamisbuck.org/2007/7/23/capistrano-multistage
-* Currently frozen at Rails 2.1.1
 
 h2. Features, bugs and development!
 
