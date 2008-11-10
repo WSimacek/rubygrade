@@ -16,6 +16,22 @@ These 6 simple steps are the essentials to get you smoothly up and running...
 # Start your server with @./script/server@
 # Open up "http://localhost:3000":http://localhost:3000 and login with username 'admin' and password 'yippeekayea'.
 
+h2. Configatron vs. Settings
+
+Previously, site settings were stored in the database. Now, you have two options for storing configuration settings. 
+
+1. Configatron config/config.yml
+
+All default configuration options that are not 'user changeable' should go in config/config.yml. This uses the Configatron gem (frozen in vendor/gems). 
+
+To retrieve the site name you may use 'configatron.site_name' everywhere in your code. 
+
+2. Settings in database
+
+It's still possible to store user changeable settings in the database model Setting. 
+
+Note: As long as there are no Settings in the database, the 'Settings' tab for the administrator is hidden. Once you add a Setting to the database through a migration (or otherwise), the Settings tab will show up. 
+
 h2. Features
 
 * Layout
