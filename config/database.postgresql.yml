@@ -12,6 +12,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: baseapp_development
+  pool: 5
   username: baseapp
   password:
 
@@ -37,6 +38,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: baseapp_test
+  pool: 5
   username: baseapp
   password:
 
@@ -44,5 +46,6 @@ production:
   adapter: postgresql
   encoding: unicode
   database: baseapp_production
+  pool: 5
   username: baseapp
   password:

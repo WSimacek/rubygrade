@@ -12,7 +12,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # Gems
-  #config.gem "capistrano-ext", :lib => "capistrano"
+  config.gem "capistrano-ext", :lib => "capistrano"
   config.gem "configatron"
 
   # Make Time.zone default to the specified zone, and make Active Record store time values
