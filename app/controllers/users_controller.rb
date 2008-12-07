@@ -135,7 +135,7 @@ class UsersController < ApplicationController
     if current_user == @user
       current_password, new_password, new_password_confirmation = params[:current_password], params[:new_password], params[:new_password_confirmation]
       
-      if User.encrypt(current_password, @user.salt) == @user.crypted_password
+      if @user.encrypt(current_password) == @user.crypted_password
         if new_password == new_password_confirmation
           if new_password.blank? || new_password_confirmation.blank?
             flash[:error] = "You cannot set a blank password."
