@@ -190,6 +190,17 @@ class UsersController < ApplicationController
     end
   end  
   
+  # DELETE /users/1
+  # DELETE /users/1.xml
+  def destroy
+    current_user.delete!
+    
+    logout_killing_session!
+    
+    flash[:notice] = "Your account has been removed."
+    redirect_back_or_default(root_path)
+  end  
+  
   protected
 
   def find_user
