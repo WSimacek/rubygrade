@@ -24,7 +24,7 @@ class Baseapp < ActiveRecord::Migration
       t.string :activation_code, :limit => 40
       t.string :state, :null => :false, :default => 'passive'      
       t.datetime :remember_token_expires_at
-      t.string :password_reset_cod, :default => nil
+      t.string :password_reset_code, :default => nil
       t.datetime :activated_at
       t.datetime :deleted_at
       t.timestamps
