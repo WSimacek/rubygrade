@@ -33,19 +33,19 @@ class Admin::UsersController < ApplicationController
   def activate
     @user = User.find(params[:id])
     @user.activate!
-    redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
   end
   
   def suspend
     @user = User.find(params[:id])
     @user.suspend! 
-    redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
   end
 
   def unsuspend
     @user = User.find(params[:id])
     @user.unsuspend! 
-    redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
   end
 
   def purge
@@ -60,7 +60,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.delete!
 
-    redirect_to admin_user_path(@user)
+    redirect_to admin_users_path
   end
 
   # GET /admin_users
@@ -102,7 +102,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
 
     respond_to do |format|
-      if @user.save
+      if @user.register!
         flash[:notice] = "User was successfully created."
         format.html { redirect_to(admin_user_url(@user)) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
