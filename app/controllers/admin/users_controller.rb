@@ -96,8 +96,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # POST /admin_users
-  # POST /admin_users.xml
+  # POST /admin/users
   def create
     @user = User.new(params[:user])
 
