@@ -1,4 +1,4 @@
-<% @user.password = @user.password_confirmation = nil %>
+<% (@user.password = @user.password_confirmation = nil) rescue nil %>
 
 <% content_for :header do -%>
 Create a new <%= configatron.site_name %> account
