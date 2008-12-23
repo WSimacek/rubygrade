@@ -3,6 +3,7 @@ belongs_to :course
 belongs_to :assignment
 belongs_to :student
 validates_presence_of :assignment_id, :student_id, :course_id 
+in_place_editable_columns :grade
 
 # turns the grade value into a percent
 def grade_hash
