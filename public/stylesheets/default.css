@@ -188,8 +188,8 @@ div.progressBar div.background {
 }
 /** Right column */
 #right {
-	float: right;
-        width: 30%;
+	float: center;
+        width: 20%;
 	padding: 0 0 1em 1.5em;
 	margin: 0;
 	color: #666;
