@@ -34,7 +34,7 @@
     <td>
       <% if r = student.registration_hash[attendance.id] %>
         <% @registration = r %>
-        <%= in_place_select :registration, :presence, :choices => %w(1 0).map { |e| [e,e] } %>
+         <%= in_place_editor_field :registration, :presence, {}, :rows => 1.1, :cols => 1 %>
       <% end %>
     </td>
   <% end %>
