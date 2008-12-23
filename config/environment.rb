@@ -15,7 +15,7 @@ Rails::Initializer.run do |config|
   config.gem "configatron"
   config.gem "fastercsv"
   config.gem "calendar_date_select"
-  config.gem 'mislav-will_paginate', :version => '~> 2.3.4'
+  config.gem 'mislav-will_paginate', :version => '~> 2.3.4', :lib => 'will_paginate', :source => 'http://gems.github.com'
      
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
