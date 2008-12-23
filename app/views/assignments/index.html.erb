@@ -1,0 +1,28 @@
+<% content_for :header do -%>
+<%= "Assignments" %>
+<% end -%>
+
+<table>
+  <thead>
+    <tr>
+    <th>Name</th>
+    <th>CourseID</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<% for assignment in @assignments %>
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td><%=h assignment.name %></td>
+    <td><%=h assignment.course_id %></td>
+    <td><%= link_to 'Show', assignment %></td>
+    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+    <td><%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New assignment', new_assignment_path %>

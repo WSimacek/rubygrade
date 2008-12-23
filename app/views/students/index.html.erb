@@ -1,0 +1,46 @@
+<% content_for :header do -%>
+<%= "Listing Students" %>
+<% end -%>
+<%= link_to image_tag('user_add.png', {:title => "Add New Student", :border => 0}), new_student_path %>
+<%= link_to 'Add New student', new_student_path %>
+
+<%= link_to image_tag('page_white_excel.png', {:title => "Import students from CSV file", :border => 0}), :controller => :import_student %>
+<%= link_to 'Import Students', :controller => :import_student %>
+
+<div id="left">
+
+<table>
+  <thead>
+    <tr>
+      <td><b>First Name</b></td>
+      <td><b>Surname</b></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</thead>
+  
+
+<% for student in @students %>
+
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td><b><%=h student.first_name %></b></td>
+    <td><b><%=h student.last_name %></b></td>
+<% for course in student.courses %>
+  <td><%=h course.name %></td>
+
+<% end %>
+<td><%= link_to image_tag('user_edit.png', {:title => 'Edit Student', :border => 0}), edit_student_path(student) %></td>
+<td><%= link_to image_tag('delete.png', {:title => 'Delete Student', :border => 0}), student, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

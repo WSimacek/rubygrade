@@ -1,7 +1,8 @@
 body {
 	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
 	color: #000;
-	background-color: #d4d4d4;
+	background: url(/images/main_background.png) repeat-x;
+        background-attachment: fixed;
 	margin: 0;
 	padding: 0;
 	font-size: 0.8em;
@@ -103,7 +104,7 @@ ul {
 }
 #left {
 	background-color: #fff;
-	width: 66%;
+	width: auto;
 }
 #left .head {
 	color: #204ca0;
@@ -187,7 +188,8 @@ div.progressBar div.background {
 }
 /** Right column */
 #right {
-	width: 30%;
+	float: right;
+        width: 30%;
 	padding: 0 0 1em 1.5em;
 	margin: 0;
 	color: #666;
@@ -643,4 +645,52 @@ div.page_header {
 #submitbutton {
 	margin: 0.8em;
 	text-align: right;
+}
+table {
+    border-collapse: collapse;
+    width: 50em;
+    border: 1px solid #666;
+}
+th, td {padding: 0.1em 1em;}
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+col {border-right: 1px solid #ccc;}
+col#albumCol {border: none;} /* Removes the right border from previous col rule */
+thead {
+    background: url(/images/table_header.jpg) repeat-x left center; /* Example will funtion w/o this rule, but it looks nice */
+    border-top: 1px solid #a5a5a5;
+    border-bottom: 1px solid #a5a5a5;
+}
+ 
+/*The tbody style below adds scrollbars to the table ... you'll need to adjust the table width to accom. */
+/* tbody {overflow: scroll; height: 100px;}*/
+ 
+th {font-weight: normal; text-align: left;}
+#playlistPosHead {text-indent: -1000em;} /* Makes column header appear "off screen" so it doesn't blow out the table */
+.odd {background: #edf5ff;} /* Alternating row color */
+tr:hover {background-color: #3d80df; color: #fff;} /* Sorry IE, you suck, no cool row hover effect for you */
+thead tr:hover {background-color: #3d80df; transparent; color: inherit;} /* Adds header row color hover effect, not really needed, but looks cool (again, IE will not handle hover effects on non-links)*/
+ 
+.list-title {
+color: #244;
+font-weight: bold;
+font-size: larger;
+}
+ 
+.list-actions {
+font-size: x-small;
+text-align: right;
+padding-left: 1em;
+}
+#newassignment {
+        width: 250px;
+	float: left;
+	padding: 0 0 1em 1.5em;
+	margin: 0;
+	color: #666;
+        background-color: #98FB98;
+        border: 1px solid #666;
 }

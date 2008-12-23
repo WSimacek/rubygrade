@@ -1,5 +1,17 @@
 # See how all your routes lay out with "rake routes"
 ActionController::Routing::Routes.draw do |map|
+  map.resources :categories
+
+  map.resources :gradations
+
+  map.resources :assignments
+
+  map.resources :attendances
+  
+  map.resources :students
+
+  map.resources :courses
+
   
   # RESTful rewrites
   

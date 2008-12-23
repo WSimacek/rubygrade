@@ -1,8 +1,9 @@
 <ul>
-	<li style="float: right;"><a href="#">Tab 1</a></li>
-	<li style="float: right;"><a href="#">Tab 2</a></li>
+	<!---<li style="float: right;"><a href="#">Tab 1</a></li>
+        <li style="float: right;"><a href="#">Tab 2</a></li>--->
 
-	<li><%= tab_to "Dashboard", [{:controller => "dashboard" }] %></li>
-	<li><%= tab_to "Ping Tab" %></li>
-	<li><%= tab_to "Pong Tab" %></li>
+	<li><%= tab_to "Home", [{:controller => "dashboard" }] %></li>
+        <li><%= tab_to "Classes", [{:controller => "courses" }] %></li>
+        <li><%= tab_to "Students", [{:controller => "students" }] %></li>
+        <li><%= tab_to "Categories", [{:controller => "categories" }] %></li>
 </ul>

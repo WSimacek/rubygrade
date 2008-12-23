@@ -1,0 +1,29 @@
+<div id="left">
+  <table> 
+  <thead> 
+    <tr><td><b>Name</b></td><td><b>Surname</b></td>
+   <% @assignments.each do |assignment| %>
+     <td>
+       <%= link_to h(assignment.name), edit_assignment_path(assignment) %>
+     </td>
+   <% end %>
+   <td><b>Grade av.</b></td>
+</tr>
+</thead>
+<% @students.each do |student| %>
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td> <%= h student.first_name %></td>
+    <td><%= h student.last_name %></td>
+   <% @assignments.each do |assignment| %>
+     <td>
+       <% if g = student.gradation_hash[assignment.id] %>
+         <% @gradation = g %>
+         <%= in_place_text_field :gradation, :grade, :size => "1" %>
+       <% end %>
+     </td>
+   <% end %>
+   <td><%= number_to_percentage(student.grade_total(@course.id), :precision => 0) rescue nil %></td>
+</tr>
+<% end %>
+</table> 
+</div>

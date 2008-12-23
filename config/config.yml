@@ -2,14 +2,14 @@
 #   configatron.site_name
 
 development: &local
-    site_name: BaseApp
-    site_url: baseapp.local
+    site_name: RubyGrade
+    site_url: http://rubygrade.heroku.com
     
-    company_name: Kabisa ICT
-    admin_email: admin@test.com
+    company_name: 
+    admin_email: aglasspool@gmail.com
     
     support_name: Support
-    support_email: support@test.com
+    support_email: aglasspool@gmail.com
 
 production:
   <<: *local

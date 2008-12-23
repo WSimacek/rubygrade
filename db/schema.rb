@@ -9,7 +9,70 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081023115224) do
+ActiveRecord::Schema.define(:version => 20081215154358) do
+
+  create_table "assignments", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.integer  "category_id"
+    t.float    "max_grade"
+    t.float    "grade_boundary1"
+    t.float    "grade_boundary2"
+    t.float    "grade_boundary3"
+    t.float    "grade_boundary4"
+    t.float    "grade_boundary5"
+    t.float    "grade_boundary6"
+    t.float    "grade_boundary7"
+    t.float    "grade_boundary8"
+    t.string   "grade_level1"
+    t.string   "grade_level2"
+    t.string   "grade_level3"
+    t.string   "grade_level4"
+    t.string   "grade_level5"
+    t.string   "grade_level6"
+    t.string   "grade_level7"
+    t.string   "grade_level8"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attendances", :force => true do |t|
+    t.date     "attendance_date"
+    t.integer  "course_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "enrollments", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gradations", :force => true do |t|
+    t.integer  "grade"
+    t.integer  "student_id"
+    t.integer  "assignment_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
@@ -21,9 +84,9 @@ ActiveRecord::Schema.define(:version => 20081023115224) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",                  :null => false
+    t.integer "timestamp",  :null => false
     t.string  "server_url"
-    t.string  "salt",       :default => "", :null => false
+    t.string  "salt",       :null => false
   end
 
   create_table "profiles", :force => true do |t|
@@ -31,6 +94,14 @@ ActiveRecord::Schema.define(:version => 20081023115224) do
     t.string   "real_name"
     t.string   "location"
     t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "attendance_id"
+    t.integer  "presence"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +125,14 @@ ActiveRecord::Schema.define(:version => 20081023115224) do
     t.datetime "updated_at"
   end
 
+  create_table "students", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "identity_url"
@@ -65,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20081023115224) do
     t.string   "activation_code",           :limit => 40
     t.string   "state",                                    :default => "passive"
     t.datetime "remember_token_expires_at"
-    t.string   "password_reset_cod"
+    t.string   "password_reset_code"
     t.datetime "activated_at"
     t.datetime "deleted_at"
     t.datetime "created_at"

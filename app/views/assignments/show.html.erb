@@ -1,0 +1,22 @@
+<% content_for :header do -%>
+<%= "Assignment: #{@assignment.name}" %>
+<% end -%>
+
+
+<% fields_for(@gradation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :grade %><br />
+    <%= f.text_field :grade %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+<%= link_to 'Back', assignments_path %>

@@ -23,7 +23,10 @@ class User < ActiveRecord::Base
   # Relations
   has_and_belongs_to_many :roles
   has_one :profile
-  
+  has_many :categories, :dependent => :destroy
+  has_many :students, :dependent => :destroy
+  has_many :courses, :dependent => :destroy
+  has_many :assignments, :through => :courses, :dependent => :destroy
   # Hooks
   after_create :create_profile
   
@@ -97,5 +100,46 @@ protected
     # Give the user a profile
     self.profile = Profile.create    
   end
+  
+# --------
+
+  # Virtual attribute for the unencrypted password
+  # attr_accessor :password
+  
+  # Per page pagination
+  # TODO: Replace with searchgasm
+  # cattr_reader :per_page
+  # @@per_page = 25
+
+
+
+
+  # Encrypts some data with the salt.
+  # def self.encrypt(password, salt)
+  #   Digest::SHA1.hexdigest("--#{salt}--#{password}--")
+  # end
+
+
+  
+
+  
+    # before filter 
+    # def encrypt_password
+    #   return if password.blank?
+    #   self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    #   self.crypted_password = encrypt(password)
+    # end
+    
+
+    
+    # def do_delete
+    #   self.deleted_at = Time.now.utc
+    # end
+    # 
+    # def do_activate
+    #   self.activated_at = Time.now.utc
+    #   self.deleted_at = self.activation_code = nil
+    # end
+    
 
 end

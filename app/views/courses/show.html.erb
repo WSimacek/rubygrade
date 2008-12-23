@@ -1,0 +1,45 @@
+<% content_for :header do -%>
+  <%= "Grades: #{@course.name}" %><br />
+  <% content_for :sidebar do -%>
+	<h2>Help</h2>
+	
+	<ul>
+          <p>
+            Once you have created an assignment,<br /> you can click on its title to edit students'grades and other details for that assignment.  </p> 
+          <p>
+            A student's average grade for the course will only be shown once a maximum grade has been set for each assignment in the course.</p>    
+        </ul>
+		
+		
+	</p>
+<% end -%>
+
+
+<%= @category.name rescue nil %>
+<% end -%>
+   <% form_for(:category, :html => {:method => :get}) do |f| %>
+   Filter by Category: <%= f.collection_select(
+      :id, 
+      @categories,
+      :id,
+      :name,
+      {:include_blank => false},
+      {:onchange => 'this.form.submit();', :name => 'category_id'}) %>
+  <% end %>
+
+
+<p>
+  <%= link_to 'Reset Filter', course_path %>
+  </p>
+    <%= render :partial => 'grade' %>
+  
+<ul>
+   <a href="#" onclick="Effect.toggle('newassignment', 'appear'); return false;"><img src="/images/add.png" "border=0"</a>New Assignment</a>
+</ul>
+<div id="newassignment" style="display:none;">
+
+   <%= form_tag :action => "assignment", :id => @course %>
+   <p><%= text_field_tag 'assignment[name]', :"name" %></p>
+ <p><%= submit_tag 'Create' %></p>   
+</div>
+

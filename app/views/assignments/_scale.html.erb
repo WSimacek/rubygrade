@@ -1,0 +1,15 @@
+<ul>
+   <a href="#" onclick="Effect.toggle('newassignment', 'appear'); return false;"><img src="/images/calculator_edit.png""border =0"<a>Grading System</a>
+</ul>
+<div id="newassignment" style="display:none;">
+  <div>
+  Grade level 1: <%= f.text_field :grade_level1, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary1, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 2: <%= f.text_field :grade_level2, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary2, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 3: <%= f.text_field :grade_level3, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary3, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 4: <%= f.text_field :grade_level4, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary4, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 5: <%= f.text_field :grade_level5, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary5, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 6: <%= f.text_field :grade_level6, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary6, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 7: <%= f.text_field :grade_level7, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary7, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 8: <%= f.text_field :grade_level8, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary8, 0..99, {:prompt=> "N/A"}) %>%<br />
+</div>
+</div>

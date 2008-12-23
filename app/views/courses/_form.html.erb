@@ -1,0 +1,11 @@
+<%= error_messages_for :course %>
+
+<% form_for @course do |f| -%>
+  <p>
+    Name: <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end -%>

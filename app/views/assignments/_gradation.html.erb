@@ -1,0 +1,11 @@
+<% new_or_existing = gradation.new_record? ? 'new' : 'existing' %>
+<% prefix = "assignment[#{new_or_existing}_gradation_attributes][]" %>
+  <% fields_for prefix, gradation do |gradation_form| -%>
+    <tr valign="top" class="<%= cycle('odd', 'even') %>">
+      <td><%=h gradation.student.first_name %></td>
+      <td><%=h gradation.student.last_name %></td>
+      <td><%= gradation_form.text_field :grade, :size => "2" %></td>
+      <td><%=h gradation.grade_level rescue nil %></td>
+    </tr>
+ 
+<% end -%>

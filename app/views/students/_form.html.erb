@@ -1,0 +1,17 @@
+<%= error_messages_for 'student' %>
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+ <p>
+<% for course in current_user.courses %>
+<div>
+<%= check_box_tag "student[course_ids][]", course.id, @student.courses.include?(course) %>
+<%=h course.name %>
+</div>
+<% end %>
+</p>

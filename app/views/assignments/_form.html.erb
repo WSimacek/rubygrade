@@ -1,0 +1,36 @@
+  <%= error_messages_for :assignment %>
+  
+
+  <% form_for(@assignment) do |f| -%>
+  <p>
+    <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label :max_grade %><br />
+    <%= f.select(:max_grade, 1..100, {:prompt=> "N/A"}) %>
+  </p>
+ <p>
+  Select Category: <%= collection_select(:assignment, :category_id, Category.find(:all), :id, :name, :include_blank=> "N/A") %>
+  </p>
+
+
+<table>
+  <thead>
+    <tr>
+      <td>First Name:</td>
+      <td>Last Name:</td>
+      <td>Grade:</td>
+      <td>Level:</td>
+      </tr>
+    </thead>
+      <%= render :partial => 'gradation', :collection => @assignment.gradations, :locals => {:gradation => @assignment} %>
+    </table>
+    <%= render :partial => 'scale', :locals => { :f,f } %> <br />
+    <br />
+    
+      <%= f.submit "Save Changes" %>
+      <br />
+      <p>
+        <%= link_to image_tag('delete.png', {:title => 'Delete this Assignment', :border => 0}), @assignment, :confirm => 'Are you sure?', :method => :delete %><%= link_to 'Delete Assignment', @assignment, :confirm => 'Are you sure?', :method => :delete %></p>
+  <% end -%>
+

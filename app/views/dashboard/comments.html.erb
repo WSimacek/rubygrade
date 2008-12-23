@@ -1,0 +1,43 @@
+<% content_for :header do -%>
+Comments
+<% end -%>
+
+<% content_for :sidebar do -%>
+	<h2>Links</h2>
+	
+	<ul>
+		<li><a href="/signup">Sign up for an account</a></li>
+		<li><a href="#">Take a Tour</a></li>
+		<li><a href="/dashboard/faqs">F.A.Qs</a></li>
+		<li><a href="/dashboard/comments">Comments</a></li>
+	</ul>
+		
+	<ul>
+		<li><a href="http://rubyglass.heroku.com">Development Blog</a></li>
+	</ul>
+		
+<% end -%>
+
+<p>
+  Spotted a bug?
+  Got a suggestion?
+  If so, please make a comment below:
+</p>
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/rubygrade/embed.js"></script><noscript><a href="http://rubygrade.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript">
+  //<![CDATA[
+  (function() {
+    var links = document.getElementsByTagName('a');
+    var query = '?';
+    for(var i = 0; i < links.length; i++) {
+    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+    query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                                        }
+                                            }
+   document.write('<script type="text/javascript" src="http://disqus.com/forums/rubygrade/get_num_replies.js' + query + '"></' + 'script>');
+                                                    })();
+                                                    //]]>
+                                                  </script>
+
+
+

@@ -1,0 +1,54 @@
+<%= calendar_date_select_includes "blue" %>
+<% content_for :header do -%>
+<%= "Attendance: #{@course.name}" %>
+<% end -%>
+   <% form_for(:category, :html => {:method => :get}) do |f| %>
+   Filter by Category: <%= f.collection_select(
+      :id, 
+      @categories,
+      :id,
+      :name,
+      {:include_blank => false},
+      {:onchange => 'this.form.submit();', :name => 'category_id'}) %>
+  <% end %>
+<p>
+  <%= link_to 'Reset Filter', edit_course_path %>
+  </p>
+ 
+
+<table>
+  <thead>
+    <tr><td><b>Name</b></td><td><b>Surname</b></td>
+    <% @attendances.each do |attendance| %>
+     <td>
+     <%= attendance.attendance_date %><%=link_to image_tag("delete.png", {:title => "Delete entry", :border => 0}), attendance, :confirm => 'Are you sure?', :method => :delete %></td>
+     </td>
+   <% end %>
+  </tr>
+</thead>
+<% @students.each do |student| %>
+  <tr valign="top" class="<%= cycle('odd', 'even') %>">
+    <td><%=h student.first_name %></td>
+    <td><%=h student.last_name %></td>
+    <% @attendances.each do |attendance| %>
+    <td>
+      <% if r = student.registration_hash[attendance.id] %>
+        <% @registration = r %>
+        <%= in_place_select :registration, :presence, :choices => %w(1 0).map { |e| [e,e] } %>
+      <% end %>
+    </td>
+  <% end %>
+</tr>
+<% end %>
+</table>
+  <ul>
+  <li> <a href="#" onclick="Effect.toggle('newattendance', 'appear'); return false;">Create New Attendance</a></li>
+</ul>
+<div id="newattendance" style="display:none;">
+
+ <%= form_tag :action => "attendance", :id => @course %>
+   <p><%= calendar_date_select_tag 'attendance[attendance_date]' %></p>
+  Select Category: <%= collection_select(:attendance, :category_id, Category.find(:all), :id, :name, :include_blank=> "N/A") %>
+<p><%= submit_tag 'Create' %></p>   
+</div>
+
