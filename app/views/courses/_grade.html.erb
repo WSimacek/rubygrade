@@ -18,7 +18,7 @@
      <td>
        <% if g = student.gradation_hash[assignment.id] %>
          <% @gradation = g %>
-         <%= in_place_text_field :gradation, :grade, :size => "1" %>
+         <%= in_place_editor_field :gradation, :grade, {}, :rows => 1.1, :cols => 1 %>
        <% end %>
      </td>
    <% end %>
