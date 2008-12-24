@@ -25,7 +25,7 @@ Many thanks to ariejan for Baseapp:
 	
  "http://github.com/ariejan/baseapp":http://github.com/ariejan/baseapp
 
-For bugs or suggestions head over to:
+To report a bug or make a suggestion head over to:
  "http://rubygrade.heroku.com/dashboard/comments"
 
 RubyGrade is released to the public under the MIT license.
