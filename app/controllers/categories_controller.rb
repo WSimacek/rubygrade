@@ -46,7 +46,7 @@ before_filter :login_required
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
-        format.html { redirect_to(@category) }
+        format.html { redirect_to categories_path }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }
