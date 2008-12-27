@@ -30,6 +30,7 @@ def show
   
   def new
     @course = current_user.courses.build
+    render :layout => false
   end
   
   
