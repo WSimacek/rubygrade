@@ -15,7 +15,7 @@ RubyGrade is built on RAILS 2.2.2
 
 These 6 simple steps are the essentials to get you smoothly up and running...
 
-# The default config/database.yml is configured for Sqlite. (you can copy one of the other sample files in there and edit it if you need)
+# The default config/database.yml is configured for Sqlite3. (you can copy one of the other sample files in there and edit it if you need)
 # Edit the config/config.yml file to suit your needs
 # Open a shell and run @rake gems:install@ to install required gems, then @rake db:migrate@ to create your database and setup the prepared defaults. 
 # Start your server with @./script/server@

@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20081215154358) do
     t.string   "grade_level4",    :default => "D"
     t.string   "grade_level5",    :default => "E"
     t.string   "grade_level6",    :default => "F"
-    t.string   "grade_level7",    :default => "n"
-    t.string   "grade_level8",    :default => "U"
+    t.string   "grade_level7",    :default => "Near miss"
+    t.string   "grade_level8",    :default => "Fail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
