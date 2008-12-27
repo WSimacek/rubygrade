@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :login_required
-  in_place_edit_for :gradation, :in_place_grade
+  in_place_edit_for :gradation, :grade
   in_place_edit_for :registration, :presence
   def index
     @courses = current_user.courses.find(:all)

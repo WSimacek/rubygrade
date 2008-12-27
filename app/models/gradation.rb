@@ -20,8 +20,7 @@ def grade_level
                 when self.assignment.grade_boundary5..self.assignment.grade_boundary4: self.assignment.grade_level5
                 when self.assignment.grade_boundary6..self.assignment.grade_boundary5: self.assignment.grade_level6
                 when self.assignment.grade_boundary7..self.assignment.grade_boundary6: self.assignment.grade_level7
-                when self.assignment.grade_boundary8..self.assignment.grade_boundary7: self.assignment.grade_level8 
-                else "N/A"
+                else self.assignment.grade_level8
                 end 
 
 

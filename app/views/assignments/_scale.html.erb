@@ -10,6 +10,24 @@
   Grade level 5: <%= f.text_field :grade_level5, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary5, 0..99, {:prompt=> "N/A"}) %>%<br />
   Grade level 6: <%= f.text_field :grade_level6, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary6, 0..99, {:prompt=> "N/A"}) %>%<br />
   Grade level 7: <%= f.text_field :grade_level7, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary7, 0..99, {:prompt=> "N/A"}) %>%<br />
-  Grade level 8: <%= f.text_field :grade_level8, :size => "5" %><br />Boundary:<%= f.select(:grade_boundary8, 0..99, {:prompt=> "N/A"}) %>%<br />
+  Grade level 8: <%= f.text_field :grade_level8, :size => "5" %><br />
+</div>
+   <a href="#help" rel="facebox"><img src="/images/help.png" "border=0"</a>Grading System - HELP</a>
+</div>
+<div id="help" style="display:none;">
+  <div>
+	<h2>Help</h2>
+	
+	<ul>
+          <p>The default values for the grading scales are set when your RubyGrade course is created, but you can change them by editing them here.</p>
+          <p>Once a maximum grade has been entered for the assignment, students' attainment levels for the assignment are calculated according to the percentage of the maximum grade achieved.</p>
+          <p>
+            The default grade levels are currently set as A,B,C etc. but they can be changed to a string or a number i.e. 1a, 2b, 3c., or "outstanding", "satisfactory", "unsatisfactory" etc.</p>
+
+
+
+	</ul>
+		
+		
 </div>
 </div>

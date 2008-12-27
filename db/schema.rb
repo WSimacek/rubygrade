@@ -16,22 +16,21 @@ ActiveRecord::Schema.define(:version => 20081215154358) do
     t.integer  "course_id"
     t.integer  "category_id"
     t.float    "max_grade"
-    t.float    "grade_boundary1"
-    t.float    "grade_boundary2"
-    t.float    "grade_boundary3"
-    t.float    "grade_boundary4"
-    t.float    "grade_boundary5"
-    t.float    "grade_boundary6"
-    t.float    "grade_boundary7"
-    t.float    "grade_boundary8"
-    t.string   "grade_level1"
-    t.string   "grade_level2"
-    t.string   "grade_level3"
-    t.string   "grade_level4"
-    t.string   "grade_level5"
-    t.string   "grade_level6"
-    t.string   "grade_level7"
-    t.string   "grade_level8"
+    t.float    "grade_boundary1", :default => 90.0
+    t.float    "grade_boundary2", :default => 80.0
+    t.float    "grade_boundary3", :default => 70.0
+    t.float    "grade_boundary4", :default => 60.0
+    t.float    "grade_boundary5", :default => 50.0
+    t.float    "grade_boundary6", :default => 40.0
+    t.float    "grade_boundary7", :default => 30.0
+    t.string   "grade_level1",    :default => "A"
+    t.string   "grade_level2",    :default => "B"
+    t.string   "grade_level3",    :default => "C"
+    t.string   "grade_level4",    :default => "D"
+    t.string   "grade_level5",    :default => "E"
+    t.string   "grade_level6",    :default => "F"
+    t.string   "grade_level7",    :default => "n"
+    t.string   "grade_level8",    :default => "U"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -21,7 +21,7 @@
     <tr><td><b>Name</b></td><td><b>Surname</b></td>
     <% @attendances.each do |attendance| %>
      <td>
-     <%= attendance.attendance_date %><%=link_to image_tag("delete.png", {:title => "Delete entry", :border => 0}), attendance, :confirm => 'Are you sure?', :method => :delete %></td>
+       <%= link_to attendance.attendance_date, edit_attendance_path(attendance), :rel => "facebox" %></td>
      </td>
    <% end %>
   </tr>
@@ -34,21 +34,38 @@
     <td>
       <% if r = student.registration_hash[attendance.id] %>
         <% @registration = r %>
-         <%= in_place_editor_field :registration, :presence, {}, :rows => 1.1, :cols => 1 %>
+         <% remote_form_for(@registration) do |form| %>
+           <%= form.text_field :presence, {:size => "1", :onchange => "this.form.submit();"} %>
       <% end %>
     </td>
+  <% end %>
   <% end %>
 </tr>
 <% end %>
 </table>
+<%= submit_tag 'Save' %>
   <ul>
-  <li> <a href="#" onclick="Effect.toggle('newattendance', 'appear'); return false;">Create New Attendance</a></li>
+   <a href="#newattendance" rel="facebox"><img src="/images/add.png" "border=0"</a>New Attendance</a>
+
 </ul>
 <div id="newattendance" style="display:none;">
 
- <%= form_tag :action => "attendance", :id => @course %>
+  <%= form_tag :action => "attendance", :id => @course %>
+  <h2>Select Date:</h2>
    <p><%= calendar_date_select_tag 'attendance[attendance_date]' %></p>
-  Select Category: <%= collection_select(:attendance, :category_id, Category.find(:all), :id, :name, :include_blank=> "N/A") %>
+   <h2> Select Category: </h2> <%= collection_select(:attendance, :category_id, Category.find(:all), :id, :name, :include_blank=> "N/A") %>
 <p><%= submit_tag 'Create' %></p>   
 </div>
+<% content_for :sidebar do -%>
+	<h2>Help</h2>
+	
+	<ul>
+          <p>Attendance Codes:</p>
+          <p>Present: "1"</p>
+          <p>Absent: "0"</p>
+          <p>Authorised absence: "nil"</p>
+	</ul>
+		
+<% end -%>
+
 

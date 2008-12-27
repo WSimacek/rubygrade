@@ -12,5 +12,30 @@ def build_registrations
   end
 end
 
+def new_registration_attributes=(registration_attributes)
+  registration_attributes.each do |attributes|
+        registrations.build(attributes)
+  end
+end
+
+after_update :save_registrations
+  
+  def existing_registration_attributes=(registration_attributes)
+    registrations.reject(&:new_record?).each do |registration|
+      attributes = registration_attributes[registration.id.to_s]
+      if attributes
+        registration.attributes = attributes
+      else
+        registrations.delete(registrations)
+      end
+    end
+  end
+  
+  def save_registrations
+    registrations.each do |registration|
+      registration.save(false)
+    end
+  end
+
 
 end

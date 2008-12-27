@@ -34,10 +34,10 @@
     <%= render :partial => 'grade' %>
   
 <ul>
-   <a href="#" onclick="Effect.toggle('newassignment', 'appear'); return false;"><img src="/images/add.png" "border=0"</a>New Assignment</a>
+   <a href="#newassignment" rel="facebox"><img src="/images/add.png" "border=0"</a>New Assignment</a>
 </ul>
 <div id="newassignment" style="display:none;">
-
+  <h2>Assignment Name:</h2>
    <%= form_tag :action => "assignment", :id => @course %>
    <p><%= text_field_tag 'assignment[name]', :"name" %></p>
  <p><%= submit_tag 'Create' %></p>   

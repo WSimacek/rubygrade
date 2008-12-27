@@ -648,7 +648,7 @@ div.page_header {
 }
 table {
     border-collapse: collapse;
-    width: 50em;
+    width: auto;
     border: 1px solid #666;
 }
 th, td {padding: 0.1em 1em;}

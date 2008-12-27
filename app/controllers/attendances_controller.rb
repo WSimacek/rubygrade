@@ -42,27 +42,25 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(params[:attendance])
 
-    respond_to do |format|
-      if @attendance.save
         flash[:notice] = 'Attendance was successfully created.'
-        format.html { redirect_to(@attendance) }
-        format.xml  { render :xml => @attendance, :status => :created, :location => @attendance }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @attendance.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        format.html { redirect_to edit_attendance_path(@attendance) } 
+        format.js
+       
       end
     end
-  end
 
   # PUT /attendances/1
   # PUT /attendances/1.xml
   def update
     @attendance = Attendance.find(params[:id])
+   params[:attendance][:existing_registration_attributes] ||= {}
+   @course = @attendance.course
 
     respond_to do |format|
       if @attendance.update_attributes(params[:attendance])
         flash[:notice] = 'Attendance was successfully updated.'
-        format.html { redirect_to(@attendance) }
+        format.html { redirect_to edit_course_path(@course) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
