@@ -1,0 +1,23 @@
+  <%= error_messages_for :attendance %>
+  
+
+  <% form_for(@attendance) do |f| -%>
+
+<table>
+  <thead>
+    <tr>
+      <td><b>Name:</b></td>
+      <td></td>
+      <td><b>Attendance:</b></td>
+      </tr>
+    </thead>
+      <%= render :partial => 'registration', :collection => @attendance.registrations, :locals => {:registration => @attendance} %>
+    </table>
+    <br /> 
+      <%= f.submit "Save Changes" %>
+      <br />
+      <p>
+        <%= link_to image_tag('delete.png', {:title => 'Delete this Attendance', :border => 0}), @attendance, :confirm => 'Are you sure?', :method => :delete %><%= link_to 'Delete Attendance', @attendance, :confirm => 'Are you sure?', :method => :delete %></p>
+  <% end -%>
+
+

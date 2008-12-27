@@ -1,0 +1,10 @@
+<% new_or_existing = registration.new_record? ? 'new' : 'existing' %>
+<% prefix = "attendance[#{new_or_existing}_registration_attributes][]" %>
+  <% fields_for prefix, registration do |registration_form| -%>
+    <tr valign="top" class="<%= cycle('odd', 'even') %>">
+      <td><%=h registration.student.first_name %></td>
+      <td><%=h registration.student.last_name %></td>
+      <td><%= registration_form.select :presence, 0..1, {:prompt => "nil"}  %></td>
+    </tr>
+ 
+<% end -%>

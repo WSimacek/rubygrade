@@ -1,0 +1,16 @@
+<%= calendar_date_select_includes "blue" %>
+<div id="left">
+<% content_for :header do -%>
+<%= "New Attendance:" %>
+<% end -%>
+
+</div>
+
+  <% form_for(@attendance) do |f| -%>
+<p><%= f.text_field :course_id %></p>
+ <p><%= f.calendar_date_select :attendance_date %></p>
+ Select Category: <%= f.collection_select(:attendance, :category_id, Category.find(:all), :id, :name, :include_blank=> "N/A") rescue nil %>
+
+
+<%= f.submit "Save Changes" %>
+<% end %>
