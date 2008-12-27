@@ -10,10 +10,8 @@
       :name,
       {:include_blank => false},
       {:onchange => 'this.form.submit();', :name => 'category_id'}) %>
-  <% end %>
-<p>
   <%= link_to 'Reset Filter', edit_course_path %>
-  </p>
+  <% end %>
  
 
 <table>
@@ -34,16 +32,13 @@
     <td>
       <% if r = student.registration_hash[attendance.id] %>
         <% @registration = r %>
-         <% remote_form_for(@registration) do |form| %>
-           <%= form.text_field :presence, {:size => "1", :onchange => "this.form.submit();"} %>
-      <% end %>
+           <%= in_place_editor_field :registration, :presence %>
     </td>
   <% end %>
   <% end %>
 </tr>
 <% end %>
 </table>
-<%= submit_tag 'Save' %>
   <ul>
    <a href="#newattendance" rel="facebox"><img src="/images/add.png" "border=0"</a>New Attendance</a>
 

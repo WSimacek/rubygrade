@@ -46,7 +46,7 @@ before_filter :login_required
     respond_to do |format|
       if @student.save
         flash[:notice] = 'Student was successfully created.'
-        format.html { redirect_to(@student) }
+        format.html { redirect_to students_path }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ before_filter :login_required
     respond_to do |format|
       if @student.update_attributes(params[:student])
         flash[:notice] = 'Student was successfully updated.'
-        format.html { redirect_to(@student) }
+        format.html { redirect_to students_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -2,7 +2,7 @@ class Assignment < ActiveRecord::Base
 belongs_to :category
 belongs_to :course
 has_many :gradations, :dependent => :destroy
-has_many :students, :through => :gradations
+has_many :students, :through => :gradations, :uniq => true
 validates_presence_of :course_id
 
 after_create :build_gradations

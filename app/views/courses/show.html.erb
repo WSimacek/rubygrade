@@ -25,12 +25,10 @@
       :name,
       {:include_blank => false},
       {:onchange => 'this.form.submit();', :name => 'category_id'}) %>
+  <%= link_to 'Reset Filter', course_path %>
   <% end %>
 
 
-<p>
-  <%= link_to 'Reset Filter', course_path %>
-  </p>
     <%= render :partial => 'grade' %>
   
 <ul>

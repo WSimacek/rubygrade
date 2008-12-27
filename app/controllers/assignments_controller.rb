@@ -75,9 +75,10 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment = current_user.assignments.find(params[:id])
     @assignment.destroy
+    @course = @assignment.course
 
     respond_to do |format|
-      format.html { redirect_to(assignments_url) }
+      format.html { redirect_to course_path(@course) }
       format.xml  { head :ok }
     end
   end
