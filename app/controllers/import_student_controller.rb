@@ -10,7 +10,7 @@ class ImportStudentController < ApplicationController
       logcount=0
       Student.transaction do
         FasterCSV.parse(file, :headers => true) do |row|
-          Student.create!(row.to_hash)
+          current_user.students.create!(row.to_hash)
           logcount += 1
         end
       end

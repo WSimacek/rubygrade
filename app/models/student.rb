@@ -10,6 +10,9 @@ has_many :gradations, :dependent => :destroy
 validates_presence_of :first_name, :last_name 
 
 attr_accessor :course_ids
+
+
+
   after_save :update_courses
 
     #after_save callback to handle group_ids
