@@ -102,6 +102,10 @@ ul {
 #left, #right {
 	float: left;
 }
+#leftfixed {
+	background-color: #fff;
+	width: 550px;
+}
 #left {
 	background-color: #fff;
 	width: auto;
